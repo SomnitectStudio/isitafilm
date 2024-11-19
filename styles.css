@@ -17,63 +17,10 @@ main {
   width: 100%;              /* Ensure it fills available space */
   max-width: 600px;         /* Limit width for large screens */
   background-color: #ffffff;
-  padding: 2em;
+  padding: 2.5em;           /* Slightly larger padding for added content */
   border-radius: 10px;      /* Rounded corners */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   text-align: center;       /* Ensure text is centered inside */
   display: flex;            /* Allow flexbox behavior */
   flex-direction: column;   /* Stack content vertically */
-  justify-content: center;  /* Ensure content is centered */
-  align-items: center;      /* Center the content horizontally */
-  min-height: 300px;        /* Ensure a minimum height for the content area */
-}
-
-/* Header styling (Title and Subtitle) */
-header {
-  margin-bottom: 1.5em;
-}
-
-header h1 {
-  font-size: 2.5em;         /* Larger font for the title */
-  margin: 0;
-}
-
-header p {
-  font-size: 1.2em;
-  color: #555;
-  margin: 0.5em 0 0;
-}
-
-/* Question section styling */
-#questionSection {
-  width: 100%;
-  text-align: center;
-}
-
-#question {
-  font-size: 1.5em;
-  margin-bottom: 1.5em;
-}
-
-/* Buttons styling */
-#buttons button {
-  margin: 0.5em;
-  padding: 1em 2em;
-  border: none;
-  background-color: #4caf50;
-  color: white;
-  font-size: 1em;
-  cursor: pointer;
-  border-radius: 5px; /* Add rounded corners to buttons */
-  transition: background-color 0.3s ease; /* Smooth hover effect */
-}
-
-#buttons button:hover {
-  background-color: #45a049;
-}
-
-/* Hide buttons after final question */
-#buttons {
-  display: flex;
-  justify-content: center;
-}
+  justify-content
