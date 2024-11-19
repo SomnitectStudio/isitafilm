@@ -1,7 +1,7 @@
-// Example flowchart
+// V1.2
 const flowchart = {
-  start: { question: "Is it in black and white?", yes: "artistic", no: "popular" },
-  artistic: { question: "Does it involve deep symbolism?", yes: "film", no: "movie" },
+  start: { question: "Is The Rock in it?", yes: "movie", no: "michaelbay" },
+  michaelbay: { question: "Does Michael Bay direct it?", yes: "movie", no: "film" },
   popular: { question: "Does it star The Rock?", yes: "movie", no: "film" },
   film: { result: "It's a FILM!" },
   movie: { result: "It's just a MOVIE!" }
