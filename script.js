@@ -10,7 +10,7 @@ let currentStep = "start"; // Start at the first question
 
 // Function to handle answers
 function handleAnswer(answer) {
-  const step = flowchart[currentStep]; // Get the current step
+  const step = flowchart[currentStep]; // Get the current step 
 
   if (step.result) {
     // If the step has a result, display it and stop the flowchart
