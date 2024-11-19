@@ -1,7 +1,7 @@
 // Flowchart structure
 const flowchart = {
-  start: { question: "Is The Rock in it?", yes: "michaelBay", no: "movie" },
-  michaelBay: { question: "Did Michael Bay direct it?", yes: "movie", no: "film" },
+  start: { question: "Is The Rock in it?", yes: "movie", no: "michaelbay" },
+  michaelbay: { question: "Did Michael Bay direct it?", yes: "movie", no: "film" },
   film: { result: "It is a FILM!" },
   movie: { result: "It is just a MOVIE." }
 };
