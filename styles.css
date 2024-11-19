@@ -4,11 +4,12 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #f0f8ff;
+  background-color: #d3d3d3;  /* Grey background */
   color: #333;
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center;     /* Center vertically */
+  overflow: hidden;        /* Prevent any overflow issues */
 }
 
 /* Main container styling */
@@ -20,15 +21,20 @@ main {
   border-radius: 10px;      /* Rounded corners */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   text-align: center;       /* Ensure text is centered inside */
+  display: flex;            /* Allow flexbox behavior */
+  flex-direction: column;   /* Stack content vertically */
+  justify-content: center;  /* Ensure content is centered */
+  align-items: center;      /* Center the content horizontally */
+  min-height: 300px;        /* Ensure a minimum height for the content area */
 }
 
-/* Header styling */
+/* Header styling (Title and Subtitle) */
 header {
   margin-bottom: 1.5em;
 }
 
 header h1 {
-  font-size: 2em;
+  font-size: 2.5em;         /* Larger font for the title */
   margin: 0;
 }
 
@@ -36,6 +42,17 @@ header p {
   font-size: 1.2em;
   color: #555;
   margin: 0.5em 0 0;
+}
+
+/* Question section styling */
+#questionSection {
+  width: 100%;
+  text-align: center;
+}
+
+#question {
+  font-size: 1.5em;
+  margin-bottom: 1.5em;
 }
 
 /* Buttons styling */
@@ -53,4 +70,10 @@ header p {
 
 #buttons button:hover {
   background-color: #45a049;
+}
+
+/* Hide buttons after final question */
+#buttons {
+  display: flex;
+  justify-content: center;
 }
