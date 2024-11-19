@@ -108,7 +108,7 @@ header p {
   border: none;
   border-radius: 8px;
   font-size: 1.1em;
-  font-weight: bold;
+  font-weight: bold; 
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
