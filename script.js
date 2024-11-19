@@ -4,7 +4,7 @@ const flowchart = {
     question: "Is The Rock in it?",
     yes: "movie",
     no: "michaelbay",
-    image: "path-to-your-image.jpg" // Add the image path here
+    image: "https://media.gq.com/photos/5ac5149c4fc1b06e2da54653/1:1/w_1295,h_1295,c_limit/ROck.jpg"
   },
   michaelbay: { question: "Did Michael Bay direct it?", yes: "movie", no: "film" },
   film: { result: "It is a FILM!" },
