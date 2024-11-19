@@ -42,7 +42,7 @@ function updateImage(step) {
   if (step === 'start') {
     image.src = 'https://media.gq.com/photos/5ac5149c4fc1b06e2da54653/1:1/w_1295,h_1295,c_limit/ROck.jpg'; // Image for question 1
   } else if (step === 'michaelbay') {
-    image.src = 'https://www.example.com/path/to/michaelbay_image.jpg'; // Image for question 2
+    image.src = 'https://media.gq.com/photos/594af29ece4edb0907ff4001/16:9/w_2560%2Cc_limit/michael-bay.jpg'; // Image for question 2
   } else if (step === 'film') {
     image.src = 'https://www.example.com/path/to/film_image.jpg'; // Image for the "film" result
   } else if (step === 'movie') {
