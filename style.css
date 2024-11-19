@@ -1,3 +1,4 @@
+
 body {
   font-family: Arial, sans-serif;
   text-align: center;
@@ -5,6 +6,10 @@ body {
   padding: 0;
   background-color: #f0f8ff;
   color: #333;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;    /* Center vertically */
+  height: 100vh;          /* Full viewport height */
 }
 
 header {
@@ -15,6 +20,10 @@ header {
 
 main {
   margin: 2em;
+  background-color: #ffffff; /* Optional: add a background for contrast */
+  padding: 2em;
+  border-radius: 10px;      /* Rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 #buttons button {
