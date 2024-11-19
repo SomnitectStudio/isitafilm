@@ -6,24 +6,25 @@ const flowchart = {
   movie: { result: "It is just a MOVIE." }
 };
 
-let currentStep = "start"; // Start with the first question
+let currentStep = "start"; // Start at the first question
 
-// Function to handle user answers
+// Function to handle answers
 function handleAnswer(answer) {
   const step = flowchart[currentStep]; // Get the current step
 
-  // If it's a result, display it and hide the buttons
   if (step.result) {
+    // If the step has a result, display it and stop the flowchart
     document.getElementById("question").textContent = step.result;
-    document.getElementById("buttons").style.display = "none"; // Hide the buttons
+    document.getElementById("buttons").style.display = "none"; // Hide buttons
     return;
   }
 
   // Move to the next step based on the answer
   currentStep = step[answer];
+
   if (flowchart[currentStep]) {
     document.getElementById("question").textContent = flowchart[currentStep].question;
   } else {
-    console.error("Invalid step:", currentStep); // Debugging in case of errors
+    console.error("Invalid step:", currentStep);
   }
 }
