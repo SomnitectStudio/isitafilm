@@ -77,14 +77,14 @@ header p {
 
 /* Styling for the question image */
 #question-image {
-  max-width: 300px;
-  width: 100%;
-  height: auto;
-  margin: 0 auto 1.5em auto; /* Centers the image horizontally */
-  display: block;  /* Ensures the image is block-level */
+  max-width: 300px; /* Ensures image is no bigger than 300px */
+  width: 100%; /* Make image responsive */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0 auto 1.5em; /* Horizontally centers the image */
+  display: block; /* Ensure the image behaves like a block element */
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  object-fit: contain; /* Keeps image ratio intact */
+  object-fit: contain; /* Keeps image aspect ratio intact */
 }
 
 /* Question section styling */
@@ -93,8 +93,8 @@ header p {
   text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;  /* Ensures content is centered */
-  justify-content: center; /* Centers vertically */
+  align-items: center; /* Centers content horizontally */
+  justify-content: center; /* Centers content vertically */
 }
 
 /* Buttons container styling */
@@ -133,4 +133,8 @@ header p {
   color: white;
 }
 
-#buttons .no-butto
+#buttons .no-button:hover {
+  background-color: #e53935;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
