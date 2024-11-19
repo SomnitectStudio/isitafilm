@@ -10,6 +10,7 @@ html, body {
   justify-content: center;   /* Center horizontally */
   align-items: center;       /* Center vertically */
   overflow: hidden;          /* Prevent any overflow issues */
+  position: relative;        /* Ensure absolute positioning works for background */
 }
 
 /* Main container styling */
@@ -36,6 +37,9 @@ body {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;   /* Center background image */
+  align-items: center;       /* Center background image */
 }
 
 /* Footer text styling */
