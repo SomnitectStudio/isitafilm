@@ -77,14 +77,14 @@ header p {
 
 /* Styling for the question image */
 #question-image {
-  max-width: 300px; /* Ensures image is no bigger than 300px */
-  width: 100%; /* Make image responsive */
-  height: auto; /* Maintain aspect ratio */
-  margin: 0 auto 1.5em; /* Horizontally centers the image */
-  display: block; /* Ensure the image behaves like a block element */
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 1.5em;
+  display: block;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  object-fit: contain; /* Keeps image aspect ratio intact */
+  object-fit: contain;
 }
 
 /* Question section styling */
@@ -92,7 +92,7 @@ header p {
   width: 100%;
   text-align: center;
   display: flex;
-  flex-direction: column-reverse;  /* Reversed order so the question appears above the image */
+  flex-direction: column; /* Ensure question appears above image */
   align-items: center; /* Centers content horizontally */
   justify-content: center; /* Centers content vertically */
 }
