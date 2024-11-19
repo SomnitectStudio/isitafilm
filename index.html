@@ -3,23 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Is it a Film?</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Is It A Film?</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<main>
   <header>
-    <h1>Is it a Film?</h1>
-    <p>Answer the questions to find out!</p>
+    <h1>Is It A Film?</h1>
+    <p>Answer some questions to find out whether or not you are watching a film or just a movie</p>
   </header>
-  <main>
-    <div id="question-box">
-      <p id="question">Is The Rock in it?</p> <!-- First question -->
-    </div>
+
+  <!-- Question Section -->
+  <section id="questionSection">
+    <img id="question-image" src="movie-question.jpg" alt="Movie Question">
+    <div id="question">Is The Rock in it?</div>
+
+    <!-- Answer buttons -->
     <div id="buttons">
-      <button onclick="handleAnswer('yes')">Yes</button>
-      <button onclick="handleAnswer('no')">No</button>
+      <button class="yes-button" onclick="handleAnswer('yes')">Yes</button>
+      <button class="no-button" onclick="handleAnswer('no')">No</button>
     </div>
-  </main>
-  <script src="script.js"></script>
+  </section>
+
+  <!-- Footer with the "Built by Somnitect Studio" and TikTok link -->
+  <div id="footer-text">
+    <p>Built by Somnitect Studio</p>
+    <p>
+      Follow us on <a href="https://www.tiktok.com/@artimuswolz" target="_blank" id="tiktok-link">@artimuswolz</a> on TikTok!
+    </p>
+  </div>
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>
