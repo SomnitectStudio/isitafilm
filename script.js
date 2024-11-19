@@ -15,15 +15,19 @@ function handleAnswer(answer) {
   if (step.result) {
     // If the step has a result, display it and stop the flowchart
     document.getElementById("question").textContent = step.result;
-    document.getElementById("buttons").style.display = "none"; // Hide buttons
+    document.getElementById("buttons").style.display = "none"; // Hide buttons when the flow ends
     return;
   }
 
   // Move to the next step based on the answer
   currentStep = step[answer];
 
+  // Check if the next step has a question or result
   if (flowchart[currentStep]) {
-    document.getElementById("question").textContent = flowchart[currentStep].question;
+    // If it’s a question, update the question text
+    if (flowchart[currentStep].question) {
+      document.getElementById("question").textContent = flowchart[currentStep].question;
+    }
   } else {
     console.error("Invalid step:", currentStep);
   }
