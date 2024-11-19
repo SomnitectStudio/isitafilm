@@ -1,24 +1,29 @@
-// Flowchart of questions and results
+// Flowchart structure
 const flowchart = {
-  start: { question: "Is it in black and white?", yes: "artistic", no: "popular" },
-  artistic: { question: "Does it involve deep symbolism?", yes: "film", no: "movie" },
-  popular: { question: "Does it star The Rock?", yes: "movie", no: "film" },
-  film: { result: "It's a FILM!" },
-  movie: { result: "It's just a MOVIE!" }
+  start: { question: "Is The Rock in it?", yes: "michaelBay", no: "movie" },
+  michaelBay: { question: "Did Michael Bay direct it?", yes: "movie", no: "film" },
+  film: { result: "It is a FILM!" },
+  movie: { result: "It is just a MOVIE." }
 };
 
-let currentStep = "start";
+let currentStep = "start"; // Start with the first question
 
-// Handle user's answer
+// Function to handle user answers
 function handleAnswer(answer) {
-  const step = flowchart[currentStep];
+  const step = flowchart[currentStep]; // Get the current step
+
+  // If it's a result, display it and hide the buttons
   if (step.result) {
-    // Display the final result
     document.getElementById("question").textContent = step.result;
-    document.getElementById("buttons").style.display = "none"; // Hide buttons
+    document.getElementById("buttons").style.display = "none"; // Hide the buttons
     return;
   }
-  // Move to the next question
+
+  // Move to the next step based on the answer
   currentStep = step[answer];
-  document.getElementById("question").textContent = flowchart[currentStep].question;
+  if (flowchart[currentStep]) {
+    document.getElementById("question").textContent = flowchart[currentStep].question;
+  } else {
+    console.error("Invalid step:", currentStep); // Debugging in case of errors
+  }
 }
