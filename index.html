@@ -7,34 +7,27 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <main>
+    <header>
+      <h1>Is It A Film?</h1>
+      <p>Answer some questions to find out whether or not you are watching a film or just a movie</p>
+    </header>
 
-<main>
-  <header>
-    <h1>Is It A Film?</h1>
-    <p>Answer some questions to find out whether or not you are watching a film or just a movie</p>
-  </header>
+    <div id="questionSection">
+      <img id="question-image" src="question-image.jpg" alt="Question 1 Image"> <!-- Change to the actual image path -->
+      <div id="question">Is The Rock in it?</div>
+    </div>
 
-  <!-- Question Section -->
-  <section id="questionSection">
-    <img id="question-image" src="movie-question.jpg" alt="Movie Question">
-    <div id="question">Is The Rock in it?</div>
-
-    <!-- Answer buttons -->
     <div id="buttons">
       <button class="yes-button" onclick="handleAnswer('yes')">Yes</button>
       <button class="no-button" onclick="handleAnswer('no')">No</button>
     </div>
-  </section>
 
-  <!-- Footer with the "Built by Somnitect Studio" and TikTok link -->
-  <div id="footer-text">
-    <p>Built by Somnitect Studio</p>
-    <p>
-      Follow us on <a href="https://www.tiktok.com/@artimuswolz" target="_blank" id="tiktok-link">@artimuswolz</a> on TikTok!
-    </p>
-  </div>
-</main>
+    <div id="footer-text">
+      Built by <span id="tiktok-link"><a href="https://www.tiktok.com/@artimuswolz" target="_blank">Somnitect Studio</a></span>
+    </div>
+  </main>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
