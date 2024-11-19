@@ -2,8 +2,8 @@
 const flowchart = {
   start: { question: "Is The Rock in it?", yes: "movie", no: "michaelbay" },
   michaelbay: { question: "Did Michael Bay direct it?", yes: "movie", no: "film" },
-  film: { result: "It is a FILM!" },
-  movie: { result: "It is just a MOVIE." }
+  film: { result: "Congratulations! It's a FILM! You have fantastic taste." },
+  movie: { result: "Sorry, it is just a MOVIE. Nobody is perfect, but you should work on that." }
 };
 
 let currentStep = "start"; // Start at the first question
