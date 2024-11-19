@@ -92,7 +92,7 @@ header p {
   width: 100%;
   text-align: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;  /* Reversed order so the question appears above the image */
   align-items: center; /* Centers content horizontally */
   justify-content: center; /* Centers content vertically */
 }
