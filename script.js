@@ -2,7 +2,6 @@
 const flowchart = {
   start: { question: "Is The Rock in it?", yes: "movie", no: "michaelbay" },
   michaelbay: { question: "Does Michael Bay direct it?", yes: "movie", no: "film" },
-  popular: { question: "Does it star The Rock?", yes: "movie", no: "film" },
   film: { result: "It's a FILM!" },
   movie: { result: "It's just a MOVIE!" }
 };
