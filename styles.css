@@ -91,7 +91,7 @@ header p {
 #question {
   font-size: 2em;           /* Increase font size */
   font-weight: bold;        /* Make the text bold */
-  margin-bottom: 1.5em;     /* Space below the question */
+  margin-bottom: 0.5em;     /* Reduce space below the question */
   text-align: center;       /* Center-align the text */
 }
 
@@ -109,40 +109,4 @@ header p {
 #buttons {
   display: flex;
   justify-content: center;
-  gap: 1em;
-}
-
-/* Button styling */
-#buttons button {
-  padding: 1em 2em;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1em;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-/* Green "Yes" button */
-#buttons .yes-button {
-  background-color: #4caf50;
-  color: white;
-}
-
-#buttons .yes-button:hover {
-  background-color: #45a049;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Red "No" button */
-#buttons .no-button {
-  background-color: #f44336;
-  color: white;
-}
-
-#buttons .no-button:hover {
-  background-color: #e53935;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+ 
