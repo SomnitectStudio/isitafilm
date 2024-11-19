@@ -80,21 +80,21 @@ header p {
   max-width: 300px;
   width: 100%;
   height: auto;
-  margin: 0 auto 1.5em auto;  /* Centers the image horizontally */
+  margin: 0 auto 1.5em auto; /* Centers the image horizontally */
   display: block;  /* Ensures the image is block-level */
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  object-fit: contain; /* Keeps image ratio intact */
 }
 
 /* Question section styling */
 #questionSection {
   width: 100%;
   text-align: center;
-}
-
-#question {
-  font-size: 1.5em;
-  margin-bottom: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Ensures content is centered */
+  justify-content: center; /* Centers vertically */
 }
 
 /* Buttons container styling */
@@ -113,7 +113,7 @@ header p {
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
-} 
+}
 
 /* Green "Yes" button */
 #buttons .yes-button {
@@ -133,8 +133,4 @@ header p {
   color: white;
 }
 
-#buttons .no-button:hover {
-  background-color: #e53935;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+#buttons .no-butto
