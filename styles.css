@@ -1,33 +1,31 @@
 /* Ensure body and html take up the full height */
 html, body {
-  height: 100%;
+  height: 100%;            /* Required for proper centering */
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #d3d3d3;
+  background-color: #d3d3d3;  /* Grey background */
   color: #333;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  overflow: hidden;        /* Prevent any overflow issues */
 }
 
 /* Main container styling */
 main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.9);
-  width: 100%;
-  max-width: 600px;
-  padding: 2.5em;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  min-height: 300px;
-  position: relative;
+  width: 100%;              /* Ensure it fills available space */
+  max-width: 600px;         /* Limit width for large screens */
+  background-color: #ffffff;
+  padding: 2em;
+  border-radius: 10px;      /* Rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-align: center;       /* Ensure text is centered inside */
+  display: flex;            /* Allow flexbox behavior */
+  flex-direction: column;   /* Stack content vertically */
+  justify-content: center;  /* Ensure content is centered */
+  align-items: center;      /* Center the content horizontally */
+  min-height: 300px;        /* Ensure a minimum height for the content area */
 }
 
 /* Background styling */
@@ -80,19 +78,11 @@ header p {
   max-width: 300px;
   width: 100%;
   height: auto;
-  margin: 0 auto 1.5em auto;
-  display: block;
+  margin: 0 auto 1.5em auto; /* Centers the image horizontally */
+  display: block;  /* Ensures the image is block-level */
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  object-fit: contain;
-}
-
-/* Question styling */
-#question {
-  font-size: 2em;           /* Increase font size */
-  font-weight: bold;        /* Make the text bold */
-  margin-bottom: 0.5em;     /* Reduce space below the question */
-  text-align: center;       /* Center-align the text */
+  object-fit: contain; /* Keeps image ratio intact */
 }
 
 /* Question section styling */
@@ -101,12 +91,48 @@ header p {
   text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: center;  /* Ensures content is centered */
+  justify-content: center; /* Centers vertically */
 }
 
 /* Buttons container styling */
 #buttons {
   display: flex;
   justify-content: center;
- 
+  gap: 1em;
+}
+
+/* Button styling */
+#buttons button {
+  padding: 1em 2em;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Green "Yes" button */
+#buttons .yes-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+#buttons .yes-button:hover {
+  background-color: #45a049;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Red "No" button */
+#buttons .no-button {
+  background-color: #f44336;
+  color: white;
+}
+
+#buttons .no-button:hover {
+  background-color: #d32f2f;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
