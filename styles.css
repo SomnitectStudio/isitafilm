@@ -1,3 +1,41 @@
+/* Ensure body and html take up the full height */
+html, body {
+  height: 100%;            /* Required for proper centering */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #d3d3d3;  /* Grey background fallback */
+  color: #333;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  overflow: hidden;        /* Prevent any overflow issues */
+
+  /* Add the movie theater key art as the background */
+  background-image: url('path_to_your_movie_theater_keyart.jpg'); /* Replace with your key art image path */
+  background-size: cover;  /* Cover the entire background */
+  background-position: center center; /* Center the background */
+  background-repeat: no-repeat; /* Prevent tiling */
+  z-index: -1; /* Ensure the background stays behind the content */
+}
+
+/* Main container styling */
+main {
+  width: 100%;              /* Ensure it fills available space */
+  max-width: 600px;         /* Limit width for large screens */
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  padding: 2.5em;           /* Slightly larger padding for added content */
+  border-radius: 10px;      /* Rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-align: center;       /* Ensure text is centered inside */
+  display: flex;            /* Allow flexbox behavior */
+  flex-direction: column;   /* Stack content vertically */
+  justify-content: center;  /* Ensure content is centered */
+  align-items: center;      /* Center the content horizontally */
+  min-height: 300px;        /* Ensure a minimum height for the content area */
+  position: relative;       /* Make sure other content layers appear above */
+}
+
 /* Footer text styling */
 #footer-text {
   font-size: 0.9em;           /* Smaller font size */
@@ -16,4 +54,86 @@
 #tiktok-link:hover {
   color: #00c2ff;             /* Lighter blue on hover */
   text-decoration: underline; /* Underline on hover */
+}
+
+/* Header styling (Title and Subtitle) */
+header {
+  margin-bottom: 1.5em;
+  text-align: center;       /* Center-align header content */
+  width: 100%;              /* Ensure consistent layout */
+}
+
+header h1 {
+  font-size: 2.5em;         /* Larger font for the title */
+  margin: 0;
+}
+
+header p {
+  font-size: 1.2em;         /* Adjusted size for longer text */
+  color: #555;
+  margin: 0.5em 0 0;
+  text-align: center;
+}
+
+/* Styling for the question image */
+#question-image {
+  max-width: 100%;          /* Ensure the image scales properly */
+  height: auto;             /* Maintain the aspect ratio */
+  margin-bottom: 1.5em;     /* Add space below the image */
+  display: block;           /* Ensure the image is block-level */
+  border-radius: 10px;      /* Optional: rounded corners for the image */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Question section styling */
+#questionSection {
+  width: 100%;
+  text-align: center;       /* Ensure all content is centered */
+}
+
+#question {
+  font-size: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+/* Buttons container styling */
+#buttons {
+  display: flex;
+  justify-content: center;  /* Center-align buttons */
+  gap: 1em; /* Add spacing between buttons */
+}
+
+/* Common button styling */
+#buttons button {
+  padding: 1em 2em;                 /* Add padding for larger clickable area */
+  border: none;                     /* Remove default border */
+  border-radius: 8px;               /* Rounded corners */
+  font-size: 1.1em;                 /* Slightly larger text */
+  font-weight: bold;                /* Make the text bold */
+  cursor: pointer;                 /* Pointer cursor for interactivity */
+  transition: transform 0.2s ease, box-shadow 0.3s ease; /* Smooth effect for hover */
+}
+
+/* Green "Yes" button */
+#buttons .yes-button {
+  background-color: #4caf50; /* Green background */
+  color: white;
+}
+
+#buttons .yes-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+  transform: translateY(-3px); /* Slight lift effect on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+/* Red "No" button */
+#buttons .no-button {
+  background-color: #f44336; /* Red background */
+  color: white;
+}
+
+#buttons .no-button:hover {
+  background-color: #e53935; /* Darker red on hover */
+  transform: translateY(-3px); /* Slight lift effect on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
