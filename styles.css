@@ -1,16 +1,16 @@
 /* Ensure body and html take up the full height */
 html, body {
-  height: 100%;              /* Full height for centering */
+  height: 100%;
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #d3d3d3; /* Fallback background color */
+  background-color: #d3d3d3;
   color: #333;
   display: flex;
-  justify-content: center;   /* Center horizontally */
-  align-items: center;       /* Center vertically */
-  overflow: hidden;          /* Prevent any overflow issues */
-  position: relative;        /* Ensure absolute positioning works for background */
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
 }
 
 /* Main container styling */
@@ -19,7 +19,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
   max-width: 600px;
   padding: 2.5em;
@@ -28,18 +28,14 @@ main {
   text-align: center;
   min-height: 300px;
   position: relative;
-  z-index: 1; /* Ensure content appears above background */
 }
 
-/* Background styling (ensure the image stays centered and covers the full page) */
+/* Background styling */
 body {
-  background-image: url('path_to_your_movie_theater_keyart.jpg'); /* Replace with your key art image path */
+  background-image: url('path_to_your_movie_theater_keyart.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;   /* Center background image */
-  align-items: center;       /* Center background image */
 }
 
 /* Footer text styling */
@@ -62,7 +58,7 @@ body {
   text-decoration: underline;
 }
 
-/* Header styling (Title and Subtitle) */
+/* Header styling */
 header {
   margin-bottom: 1.5em;
   text-align: center;
@@ -81,13 +77,13 @@ header p {
 
 /* Styling for the question image */
 #question-image {
-  max-width: 300px;    /* Maximum width of the image */
-  width: 100%;         /* Make sure the image is responsive within its container */
-  height: auto;        /* Maintain aspect ratio */
-  margin-bottom: 1.5em; /* Space below the image */
-  display: block;      /* Ensure the image is block-level */
-  border-radius: 10px; /* Optional: rounded corners for the image */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 1.5em auto;  /* Centers the image horizontally */
+  display: block;  /* Ensures the image is block-level */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Question section styling */
@@ -104,11 +100,11 @@ header p {
 /* Buttons container styling */
 #buttons {
   display: flex;
-  justify-content: center;   /* Center-align buttons */
-  gap: 1em; /* Add spacing between buttons */
+  justify-content: center;
+  gap: 1em;
 }
 
-/* Common button styling */
+/* Button styling */
 #buttons button {
   padding: 1em 2em;
   border: none;
