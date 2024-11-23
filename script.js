@@ -23,39 +23,33 @@
   </div>
 
   <script>
-   <script>
     // List of quiz questions and possible answers
     const questions = [
       { 
         question: "Is there a car chase?", 
         answers: ["Yes", "No"], 
         correctAnswer: "Yes", 
-        followUp: null // No follow-up for this one
+        followUp: null, 
+        customMessage: "Vroom! A car chase always adds excitement!"
       },
       { 
         question: "Does the movie have explosions?", 
         answers: ["Yes", "No"], 
         correctAnswer: "Yes", 
-        followUp: "Is the explosion big and dramatic?" // Follow-up if "Yes"
-      },
-      { 
-        question: "Is there any other type of action?", 
-        answers: ["Yes", "No"], 
-        correctAnswer: "No", 
-        followUp: null // No follow-up for this one
+        followUp: "Is the explosion big and dramatic?" 
       },
       { 
         question: "Is the movie in color or black-and-white?", 
         answers: ["Color", "Black-and-white"], 
         correctAnswer: "Color", 
-        followUp: null // No follow-up for this one
+        followUp: null
       },
       { 
         question: "Does the movie explore complex philosophical themes?", 
         answers: ["Yes", "No"], 
         correctAnswer: "No", 
-        followUp: null // No follow-up for this one
-      },
+        followUp: null
+      }
     ];
 
     // Function to shuffle the questions array
@@ -66,10 +60,11 @@
       }
     }
 
-    // Shuffle the questions
+    // Shuffle the questions to randomize the order at the start
     shuffleArray(questions);
 
     let currentQuestionIndex = 0;
+    let userAnswers = [];
 
     // Function to display the next question
     function displayQuestion() {
@@ -91,21 +86,40 @@
       const question = questions[currentQuestionIndex];
       const result = document.getElementById("result");
 
+      // Store the answer
+      userAnswers.push({ question: question.question, answer: answer });
+
       // Check if the answer is correct
       if (answer === question.correctAnswer) {
         result.textContent = "Correct answer!";
-      } else {
-        result.textContent = "Incorrect answer!";
-      }
+        
+        // Display custom message if the answer is correct
+        if (question.customMessage) {
+          result.textContent += ` ${question.customMessage}`;
+        }
 
-      // Move to the next question
-      currentQuestionIndex++;
-      if (currentQuestionIndex < questions.length) {
-        displayQuestion();
+        // Move to the next question or end quiz
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+          displayQuestion();
+        } else {
+          result.textContent += " Quiz finished!";
+          document.getElementById("question-container").innerHTML = "";
+          document.querySelector("button").style.display = "none"; // Hide "Next Question" button
+        }
       } else {
-        result.textContent += " Quiz finished!";
-        document.getElementById("question-container").innerHTML = "";
-        document.querySelector("button").style.display = "none"; // Hide "Next Question" button
+        result.textContent = "Incorrect answer! Redirecting to a random question.";
+
+        // Get a random question index, but exclude the current question
+        const remainingQuestions = questions.filter((q, index) => index !== currentQuestionIndex);
+        const randomQuestionIndex = Math.floor(Math.random() * remainingQuestions.length);
+        const randomQuestion = remainingQuestions[randomQuestionIndex];
+
+        // Find the index of the random question in the original array
+        currentQuestionIndex = questions.indexOf(randomQuestion);
+
+        // Display the random question
+        displayQuestion();
       }
     }
 
