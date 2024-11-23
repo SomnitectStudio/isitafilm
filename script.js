@@ -1,131 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movie or Film Quiz</title>
-  <style>
-    .question-container {
-      margin: 20px;
-    }
-    .result {
-      margin-top: 20px;
-      font-size: 20px;
-    }
-  </style>
-</head>
-<body>
+// Array of questions and answers
+const questions = [
+  { 
+    question: "Is The Rock in it?", 
+    answers: ["Yes", "No"], 
+    correctAnswer: "Yes", 
+    followUp: "Does he do his own stunts?", 
+    image: "path_to_image_rock.jpg"
+  },
+  { 
+    question: "Does the movie have explosions?", 
+    answers: ["Yes", "No"], 
+    correctAnswer: "Yes", 
+    followUp: "Are the explosions huge and over the top?", 
+    image: "path_to_image_explosions.jpg"
+  },
+  { 
+    question: "Is it a black and white movie?", 
+    answers: ["Yes", "No"], 
+    correctAnswer: "No", 
+    followUp: "Does the movie have a modern feel?", 
+    image: "path_to_image_black_and_white.jpg"
+  },
+  { 
+    question: "Does the movie explore deep philosophical themes?", 
+    answers: ["Yes", "No"], 
+    correctAnswer: "No", 
+    followUp: "Does it have a plot twist?", 
+    image: "path_to_image_philosophical.jpg"
+  }
+];
 
-  <div id="quiz">
-    <div class="question-container" id="question-container"></div>
-    <button onclick="nextQuestion()">Next Question</button>
-    <div class="result" id="result"></div>
-  </div>
+let currentQuestionIndex = 0;
+let userAnswers = [];
 
-  <script>
-    // List of quiz questions and possible answers
-    const questions = [
-      { 
-        question: "Is there a car chase?", 
-        answers: ["Yes", "No"], 
-        correctAnswer: "Yes", 
-        followUp: null, 
-        customMessage: "Vroom! A car chase always adds excitement!"
-      },
-      { 
-        question: "Does the movie have explosions?", 
-        answers: ["Yes", "No"], 
-        correctAnswer: "Yes", 
-        followUp: "Is the explosion big and dramatic?" 
-      },
-      { 
-        question: "Is the movie in color or black-and-white?", 
-        answers: ["Color", "Black-and-white"], 
-        correctAnswer: "Color", 
-        followUp: null
-      },
-      { 
-        question: "Does the movie explore complex philosophical themes?", 
-        answers: ["Yes", "No"], 
-        correctAnswer: "No", 
-        followUp: null
-      }
-    ];
+// Function to start the quiz
+function startFlow() {
+  // Hide the start section
+  document.getElementById("startSection").style.display = "none";
 
-    // Function to shuffle the questions array
-    function shuffleArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
-      }
-    }
+  // Show the question and buttons section
+  document.getElementById("questionSection").style.display = "block";
+  document.getElementById("buttons").style.display = "block";
 
-    // Shuffle the questions to randomize the order at the start
-    shuffleArray(questions);
+  // Display the first question
+  displayQuestion();
+}
 
-    let currentQuestionIndex = 0;
-    let userAnswers = [];
+// Function to display a question
+function displayQuestion() {
+  const question = questions[currentQuestionIndex];
 
-    // Function to display the next question
-    function displayQuestion() {
-      const question = questions[currentQuestionIndex];
-      const container = document.getElementById("question-container");
+  // Update question text
+  document.getElementById("question").textContent = question.question;
 
-      // Clear previous result
-      document.getElementById("result").textContent = "";
+  // Update question image
+  const questionImage = document.getElementById("question-image");
+  if (question.image) {
+    questionImage.src = question.image;
+    questionImage.style.display = "block";  // Show the image
+  } else {
+    questionImage.style.display = "none";  // Hide if no image
+  }
+}
 
-      container.innerHTML = `
-        <p><strong>${question.question}</strong></p>
-        <button onclick="answerQuestion('${question.answers[0]}')">${question.answers[0]}</button>
-        <button onclick="answerQuestion('${question.answers[1]}')">${question.answers[1]}</button>
-      `;
-    }
+// Function to handle the user's answer
+function handleAnswer(answer) {
+  const question = questions[currentQuestionIndex];
+  const result = document.getElementById("result");
 
-    // Function to handle answers and move to next question
-    function answerQuestion(answer) {
-      const question = questions[currentQuestionIndex];
-      const result = document.getElementById("result");
+  // Store the answer
+  userAnswers.push({ question: question.question, answer: answer });
 
-      // Store the answer
-      userAnswers.push({ question: question.question, answer: answer });
+  // Check if the answer is correct
+  if (answer === question.correctAnswer) {
+    result.textContent = "Correct answer!";
+  } else {
+    result.textContent = "Incorrect answer!";
+  }
 
-      // Check if the answer is correct
-      if (answer === question.correctAnswer) {
-        result.textContent = "Correct answer!";
-        
-        // Display custom message if the answer is correct
-        if (question.customMessage) {
-          result.textContent += ` ${question.customMessage}`;
-        }
+  // Proceed to the next question or finish the quiz
+  currentQuestionIndex++;
 
-        // Move to the next question or end quiz
-        currentQuestionIndex++;
-        if (currentQuestionIndex < questions.length) {
-          displayQuestion();
-        } else {
-          result.textContent += " Quiz finished!";
-          document.getElementById("question-container").innerHTML = "";
-          document.querySelector("button").style.display = "none"; // Hide "Next Question" button
-        }
-      } else {
-        result.textContent = "Incorrect answer! Redirecting to a random question.";
-
-        // Get a random question index, but exclude the current question
-        const remainingQuestions = questions.filter((q, index) => index !== currentQuestionIndex);
-        const randomQuestionIndex = Math.floor(Math.random() * remainingQuestions.length);
-        const randomQuestion = remainingQuestions[randomQuestionIndex];
-
-        // Find the index of the random question in the original array
-        currentQuestionIndex = questions.indexOf(randomQuestion);
-
-        // Display the random question
-        displayQuestion();
-      }
-    }
-
-    // Initial call to display the first question
+  if (currentQuestionIndex < questions.length) {
+    // Display next question
     displayQuestion();
-  </script>
+  } else {
+    // End of quiz
+    result.textContent += " Quiz completed! Here's your result:";
+    showFinalResult();
+  }
+}
 
-</body>
-</html>
+// Function to show final result (you can customize this part)
+function showFinalResult() {
+  const result = document.getElementById("result");
+
+  // Here you can analyze the user's answers and give them a final result.
+  let score = userAnswers.filter(answer => answer.answer === questions[userAnswers.indexOf(answer)].correctAnswer).length;
+  result.textContent += ` You answered ${score} out of ${questions.length} correctly.`;
+
+  // Optionally display some custom message based on score
+  if (score === questions.length) {
+    result.textContent += " Congratulations, you know your films!";
+  } else {
+    result.textContent += " Looks like you need to watch more films!";
+  }
+
+  // Hide the question and answer buttons
+  document.getElementById("questionSection").style.display = "none";
+  document.getElementById("buttons").style.display = "none";
+}
