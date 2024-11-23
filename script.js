@@ -1,57 +1,92 @@
-// Flowchart structure
-const flowchart = {
-  start: { question: "Is The Rock in it?", yes: "movie", no: "michaelbay" },
-  michaelbay: { question: "Did Michael Bay direct it?", yes: "movie", no: "film" },
-  film: { result: "It is a FILM!" },
-  movie: { result: "It is just a MOVIE." }
-};
-
-let currentStep = "start"; // Start at the first question
-
-// Function to handle the start of the flow
-function startFlow() {
-  // Hide the "Start" button and show the question and answer buttons
-  document.getElementById("startSection").style.display = "none";
-  document.getElementById("questionSection").style.display = "block";
-  document.getElementById("buttons").style.display = "flex";  // Show the buttons
-
-  // Set the initial question
-  updateQuestion();
-}
-
-// Function to handle answers (Yes/No)
-function handleAnswer(answer) {
-  const step = flowchart[currentStep]; // Get the current step
-
-  if (step.result) {
-    // If the step has a result, display it and stop the flowchart
-    document.getElementById("question").textContent = step.result;
-    document.getElementById("buttons").style.display = "none"; // Hide buttons when the flow ends
-
-    // Hide the title and description
-    document.getElementById("title").style.display = "none";
-    document.getElementById("description").style.display = "none";
-
-    return;
-  }
-
-  // Move to the next step based on the answer
-  currentStep = step[answer];
-
-  // Update the question or result
-  updateQuestion();
-}
-
-// Function to update the question
-function updateQuestion() {
-  const step = flowchart[currentStep]; // Get the current step
-
-  if (step) {
-    // If it's a question, update the question text
-    if (step.question) {
-      document.getElementById("question").textContent = step.question;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie or Film Quiz</title>
+  <style>
+    .question-container {
+      margin: 20px;
     }
-  } else {
-    console.error("Invalid step:", currentStep);
-  }
-}
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="quiz">
+    <div class="question-container" id="question-container"></div>
+    <button onclick="nextQuestion()">Next Question</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    // List of quiz questions and possible answers
+    const questions = [
+      { question: "Is there a car chase?", answers: ["Yes", "No"], correctAnswer: "Yes" },
+      { question: "Do the characters have deep, introspective monologues about life?", answers: ["Yes", "No"], correctAnswer: "No" },
+      { question: "Is there a scene where the main character dramatically walks away from an explosion in slow motion?", answers: ["Yes", "No"], correctAnswer: "Yes" },
+      { question: "Is the movie in color or black-and-white?", answers: ["Color", "Black-and-white"], correctAnswer: "Color" },
+      { question: "Does the movie explore complex philosophical themes?", answers: ["Yes", "No"], correctAnswer: "No" },
+      { question: "Does the movie feature more than one car explosion?", answers: ["Yes", "No"], correctAnswer: "Yes" },
+    ];
+
+    // Function to shuffle the questions array
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+      }
+    }
+
+    // Shuffle the questions
+    shuffleArray(questions);
+
+    let currentQuestionIndex = 0;
+
+    // Function to display the next question
+    function displayQuestion() {
+      const question = questions[currentQuestionIndex];
+      const container = document.getElementById("question-container");
+
+      // Clear previous result
+      document.getElementById("result").textContent = "";
+
+      container.innerHTML = `
+        <p><strong>${question.question}</strong></p>
+        <button onclick="answerQuestion('${question.answers[0]}')">${question.answers[0]}</button>
+        <button onclick="answerQuestion('${question.answers[1]}')">${question.answers[1]}</button>
+      `;
+    }
+
+    // Function to handle answers and move to next question
+    function answerQuestion(answer) {
+      const question = questions[currentQuestionIndex];
+      const result = document.getElementById("result");
+
+      // Check if the answer is correct
+      if (answer === question.correctAnswer) {
+        result.textContent = "Correct answer!";
+      } else {
+        result.textContent = "Incorrect answer!";
+      }
+
+      // Move to the next question
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        displayQuestion();
+      } else {
+        result.textContent += " Quiz finished!";
+        document.getElementById("question-container").innerHTML = "";
+        document.querySelector("button").style.display = "none"; // Hide "Next Question" button
+      }
+    }
+
+    // Initial call to display the first question
+    displayQuestion();
+  </script>
+
+</body>
+</html>
