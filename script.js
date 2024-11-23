@@ -1,3 +1,11 @@
+// Fisher-Yates Shuffle function to randomize the order of the questions
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+  }
+}
+
 // Array of questions and answers
 const questions = [
   { 
@@ -36,6 +44,9 @@ let userAnswers = [];
 // Function to start the quiz
 function startFlow() {
   console.log("startFlow() called");
+
+  // Shuffle the questions before starting the quiz
+  shuffleArray(questions);
 
   // Hide the start section
   document.getElementById("startSection").style.display = "none";
