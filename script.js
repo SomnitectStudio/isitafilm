@@ -35,10 +35,12 @@ let userAnswers = [];
 
 // Function to start the quiz
 function startFlow() {
+  console.log("startFlow() called");
+
   // Hide the start section
   document.getElementById("startSection").style.display = "none";
 
-  // Show the question and buttons section
+  // Show the question section and answer buttons
   document.getElementById("questionSection").style.display = "block";
   document.getElementById("buttons").style.display = "block";
 
