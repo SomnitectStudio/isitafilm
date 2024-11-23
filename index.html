@@ -13,11 +13,24 @@
       <p id="description">Answer some questions to find out whether or not you are watching a film or just a movie</p>
     </header>
 
-    <div id="buttons">
+    <!-- Start button section (only visible initially) -->
+    <div id="startSection">
+      <button class="yes-button" onclick="startFlow()">Start</button>
+    </div>
+
+    <!-- Question section (hidden initially) -->
+    <div id="questionSection" style="display: none;">
+      <div id="question">Is The Rock in it?</div>
+      <img id="question-image" src="path_to_image.jpg" alt="question image">
+    </div>
+
+    <!-- Yes/No buttons (hidden initially) -->
+    <div id="buttons" style="display: none;">
       <button class="yes-button" onclick="handleAnswer('yes')">Yes</button>
       <button class="no-button" onclick="handleAnswer('no')">No</button>
     </div>
 
+    <!-- Footer -->
     <div id="footer-text">
       Built by <span id="tiktok-link"><a href="https://www.tiktok.com/@artimuswolz" target="_blank">Somnitect Studio</a></span>
     </div>
