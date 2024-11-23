@@ -13,14 +13,16 @@ const questions = [
     answers: ["Yes", "No"], 
     correctAnswer: "Yes", 
     followUp: "Does he do his own stunts?", 
-    image: "path_to_image_rock.jpg"
+    image: "https://watercoolerhq.co/wp-content/uploads/2021/07/Rock-khaki-collage-e1627672868830-768x421.jpg",
+    incorrectText: "Oof. Sorry, this is definetely just a movie. Smell what I'm cooking?"
   },
   { 
     question: "Does the movie have explosions?", 
     answers: ["Yes", "No"], 
     correctAnswer: "Yes", 
-    followUp: "Are the explosions huge and over the top?", 
-    image: "path_to_image_explosions.jpg"
+    followUp: "Did Michael Bay direct it", 
+    coorectAnswer: "No",
+    incorrectText: "Yeah, no. This man is to cinema what slaughterhouses are to cute animals"
   },
   { 
     question: "Is it a black and white movie?", 
