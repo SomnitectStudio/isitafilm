@@ -23,14 +23,39 @@
   </div>
 
   <script>
+   <script>
     // List of quiz questions and possible answers
     const questions = [
-      { question: "Is there a car chase?", answers: ["Yes", "No"], correctAnswer: "Yes" },
-      { question: "Do the characters have deep, introspective monologues about life?", answers: ["Yes", "No"], correctAnswer: "No" },
-      { question: "Is there a scene where the main character dramatically walks away from an explosion in slow motion?", answers: ["Yes", "No"], correctAnswer: "Yes" },
-      { question: "Is the movie in color or black-and-white?", answers: ["Color", "Black-and-white"], correctAnswer: "Color" },
-      { question: "Does the movie explore complex philosophical themes?", answers: ["Yes", "No"], correctAnswer: "No" },
-      { question: "Does the movie feature more than one car explosion?", answers: ["Yes", "No"], correctAnswer: "Yes" },
+      { 
+        question: "Is there a car chase?", 
+        answers: ["Yes", "No"], 
+        correctAnswer: "Yes", 
+        followUp: null // No follow-up for this one
+      },
+      { 
+        question: "Does the movie have explosions?", 
+        answers: ["Yes", "No"], 
+        correctAnswer: "Yes", 
+        followUp: "Is the explosion big and dramatic?" // Follow-up if "Yes"
+      },
+      { 
+        question: "Is there any other type of action?", 
+        answers: ["Yes", "No"], 
+        correctAnswer: "No", 
+        followUp: null // No follow-up for this one
+      },
+      { 
+        question: "Is the movie in color or black-and-white?", 
+        answers: ["Color", "Black-and-white"], 
+        correctAnswer: "Color", 
+        followUp: null // No follow-up for this one
+      },
+      { 
+        question: "Does the movie explore complex philosophical themes?", 
+        answers: ["Yes", "No"], 
+        correctAnswer: "No", 
+        followUp: null // No follow-up for this one
+      },
     ];
 
     // Function to shuffle the questions array
