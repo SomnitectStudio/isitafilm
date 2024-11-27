@@ -14,14 +14,14 @@ const questions = [
     correctAnswer: "Yes", 
     followUp: "Does he do his own stunts?", 
     image: "https://watercoolerhq.co/wp-content/uploads/2021/07/Rock-khaki-collage-e1627672868830-768x421.jpg",
-    incorrectText: "Oof. Sorry, this is definetely just a movie. Smell what I'm cooking?"
+    incorrectText: "Oof. Sorry, this is definitely just a movie. Smell what I'm cooking?"
   },
   { 
     question: "Does the movie have explosions?", 
     answers: ["Yes", "No"], 
     correctAnswer: "Yes", 
-    followUp: "Did Michael Bay direct it", 
-    coorectAnswer: "No",
+    followUp: "Did Michael Bay direct it?",  // Fixed typo in follow-up text
+    correctAnswerFollowUp: "No",  // Correct answer for follow-up question
     incorrectText: "Yeah, no. This man is to cinema what slaughterhouses are to cute animals"
   },
   { 
@@ -76,6 +76,17 @@ function displayQuestion() {
   } else {
     questionImage.style.display = "none";  // Hide if no image
   }
+
+  // Display answer options
+  const answersContainer = document.getElementById("answers");
+  answersContainer.innerHTML = '';  // Clear any previous answers
+
+  question.answers.forEach(answer => {
+    const button = document.createElement("button");
+    button.textContent = answer;
+    button.onclick = () => handleAnswer(answer);
+    answersContainer.appendChild(button);
+  });
 }
 
 // Function to handle the user's answer
@@ -90,28 +101,78 @@ function handleAnswer(answer) {
   if (answer === question.correctAnswer) {
     result.textContent = "Correct answer!";
   } else {
-    result.textContent = "Incorrect answer!";
+    result.textContent = `Incorrect answer! ${question.incorrectText || ''}`;
   }
 
-  // Proceed to the next question or finish the quiz
-  currentQuestionIndex++;
+  // If there's a follow-up question, show it after the main question
+  if (question.followUp) {
+    setTimeout(() => {
+      result.textContent = question.followUp;  // Display the follow-up question text
+      const followUpAnswerContainer = document.createElement("div");
+      const followUpAnswers = ["Yes", "No"];
 
-  if (currentQuestionIndex < questions.length) {
-    // Display next question
-    displayQuestion();
+      followUpAnswers.forEach(followUpAnswer => {
+        const button = document.createElement("button");
+        button.textContent = followUpAnswer;
+        button.onclick = () => handleFollowUpAnswer(followUpAnswer);
+        followUpAnswerContainer.appendChild(button);
+      });
+      
+      document.getElementById("buttons").appendChild(followUpAnswerContainer);
+    }, 1000); // Wait for 1 second before showing the follow-up question
   } else {
-    // End of quiz
-    result.textContent += " Quiz completed! Here's your result:";
-    showFinalResult();
+    // Proceed to the next question or finish the quiz
+    setTimeout(() => {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        // Display next question
+        displayQuestion();
+      } else {
+        // End of quiz
+        result.textContent += " Quiz completed! Here's your result:";
+        showFinalResult();
+      }
+    }, 1000);  // Delay before moving to the next question
   }
 }
 
-// Function to show final result (you can customize this part)
+// Function to handle the user's follow-up answer
+function handleFollowUpAnswer(followUpAnswer) {
+  const followUpResult = document.getElementById("result");
+  const currentQuestion = questions[currentQuestionIndex];
+
+  // Store the follow-up answer
+  userAnswers.push({ question: currentQuestion.followUp, answer: followUpAnswer });
+
+  // Check if the follow-up answer is correct
+  if (followUpAnswer === currentQuestion.correctAnswerFollowUp) {
+    followUpResult.textContent = "Correct!";
+  } else {
+    followUpResult.textContent = "Incorrect!";
+  }
+
+  // After follow-up answer, move to the next question or end quiz
+  setTimeout(() => {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+      // Display next question
+      displayQuestion();
+    } else {
+      showFinalResult();
+    }
+  }, 1000);
+}
+
+// Function to show final result
 function showFinalResult() {
   const result = document.getElementById("result");
 
-  // Here you can analyze the user's answers and give them a final result.
-  let score = userAnswers.filter(answer => answer.answer === questions[userAnswers.indexOf(answer)].correctAnswer).length;
+  // Calculate score
+  let score = userAnswers.filter(answer => {
+    const question = questions.find(q => q.question === answer.question);
+    return answer.answer === question.correctAnswer;
+  }).length;
+
   result.textContent += ` You answered ${score} out of ${questions.length} correctly.`;
 
   // Optionally display some custom message based on score
