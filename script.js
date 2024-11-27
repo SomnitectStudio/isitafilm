@@ -14,7 +14,8 @@ const questions = [
     correctAnswer: "Yes", 
     followUp: "Does he do his own stunts?", 
     image: "https://watercoolerhq.co/wp-content/uploads/2021/07/Rock-khaki-collage-e1627672868830-768x421.jpg",
-    incorrectText: "Oof. Sorry, this is definitely just a movie. Smell what I'm cooking?"
+    incorrectText: "Oof. Sorry, this is definitely just a movie. Smell what I'm cooking?",
+    endQuizOnAnswer: "No"  // End quiz if the answer is "No"
   },
   { 
     question: "Does the movie have explosions?", 
@@ -22,7 +23,8 @@ const questions = [
     correctAnswer: "Yes", 
     followUp: "Did Michael Bay direct it?",  // Fixed typo in follow-up text
     correctAnswerFollowUp: "No",  // Correct answer for follow-up question
-    incorrectText: "Yeah, no. This man is to cinema what slaughterhouses are to cute animals"
+    incorrectText: "Yeah, no. This man is to cinema what slaughterhouses are to cute animals",
+    endQuizOnAnswer: "No"  // End quiz if the answer is "No"
   },
   { 
     question: "Is it a black and white movie?", 
@@ -97,6 +99,13 @@ function handleAnswer(answer) {
   // Store the answer
   userAnswers.push({ question: question.question, answer: answer });
 
+  // Check if the answer should end the quiz immediately
+  if (question.endQuizOnAnswer && answer === question.endQuizOnAnswer) {
+    result.textContent = `Quiz ended early! You answered: ${answer}.`;
+    showFinalResult();
+    return;  // Skip the rest of the logic, ending the quiz immediately
+  }
+
   // Check if the answer is correct
   if (answer === question.correctAnswer) {
     result.textContent = "Correct answer!";
@@ -124,6 +133,8 @@ function handleAnswer(answer) {
     // Proceed to the next question or finish the quiz
     setTimeout(() => {
       currentQuestionIndex++;
+      clearFollowUpButtons();  // Clear follow-up buttons before moving to the next question
+
       if (currentQuestionIndex < questions.length) {
         // Display next question
         displayQuestion();
@@ -154,6 +165,8 @@ function handleFollowUpAnswer(followUpAnswer) {
   // After follow-up answer, move to the next question or end quiz
   setTimeout(() => {
     currentQuestionIndex++;
+    clearFollowUpButtons();  // Clear follow-up buttons before moving to the next question
+
     if (currentQuestionIndex < questions.length) {
       // Display next question
       displayQuestion();
@@ -161,6 +174,12 @@ function handleFollowUpAnswer(followUpAnswer) {
       showFinalResult();
     }
   }, 1000);
+}
+
+// Function to clear the follow-up buttons
+function clearFollowUpButtons() {
+  const buttonsContainer = document.getElementById("buttons");
+  buttonsContainer.innerHTML = '';  // Clear all follow-up buttons
 }
 
 // Function to show final result
