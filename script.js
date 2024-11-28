@@ -11,11 +11,9 @@ const questions = [
   { 
     question: "Is The Rock in it?", 
     answers: ["Yes", "No"], 
-    correctAnswer: "Yes", 
-    followUp: "Does he do his own stunts?", 
+    correctAnswer: "No", 
     image: "https://watercoolerhq.co/wp-content/uploads/2021/07/Rock-khaki-collage-e1627672868830-768x421.jpg",
-    incorrectText: "Oof. Sorry, this is definitely just a movie. Smell what I'm cooking?",
-    endQuizOnAnswer: "No"  // End quiz if the answer is "No"
+    endQuizOnAnswer: { answer: "Yes", message: "Oof, sorry, this is definetely just a movie. Please tell me you didn't pay for this" }  // Custom message
   },
   { 
     question: "Does the movie have explosions?", 
@@ -24,7 +22,7 @@ const questions = [
     followUp: "Did Michael Bay direct it?",  // Fixed typo in follow-up text
     correctAnswerFollowUp: "No",  // Correct answer for follow-up question
     incorrectText: "Yeah, no. This man is to cinema what slaughterhouses are to cute animals",
-    endQuizOnAnswer: "No"  // End quiz if the answer is "No"
+    endQuizOnAnswer: { answer: "No", message: "Quiz ended early! No explosions, no fun!" }  // Custom message
   },
   { 
     question: "Is it a black and white movie?", 
@@ -99,9 +97,9 @@ function handleAnswer(answer) {
   // Store the answer
   userAnswers.push({ question: question.question, answer: answer });
 
-  // Check if the answer should end the quiz immediately
-  if (question.endQuizOnAnswer && answer === question.endQuizOnAnswer) {
-    result.textContent = `Quiz ended early! You answered: ${answer}.`;
+  // Check if the answer should end the quiz immediately with a custom message
+  if (question.endQuizOnAnswer && answer === question.endQuizOnAnswer.answer) {
+    result.textContent = question.endQuizOnAnswer.message;  // Show the custom end message
     showFinalResult();
     return;  // Skip the rest of the logic, ending the quiz immediately
   }
