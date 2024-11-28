@@ -13,14 +13,12 @@ const questions = [
     answers: ["Yes", "No"], 
     correctAnswer: "No", 
     image: "https://watercoolerhq.co/wp-content/uploads/2021/07/Rock-khaki-collage-e1627672868830-768x421.jpg",
-    endQuizOnAnswer: { answer: "Yes", message: "Oof, sorry, this is definetely just a movie. Please tell me you didn't pay for this" }  // Custom message
+    endQuizOnAnswer: { answer: "Yes", message: "Oof, sorry, this is definitely just a movie. Please tell me you didn't pay for this" }  // Custom message
   },
   { 
     question: "Does the movie have explosions?", 
     answers: ["Yes", "No"], 
     correctAnswer: "Yes", 
-    followUp: "Did Michael Bay direct it?",  // Fixed typo in follow-up text
-    correctAnswerFollowUp: "No",  // Correct answer for follow-up question
     incorrectText: "Yeah, no. This man is to cinema what slaughterhouses are to cute animals",
     endQuizOnAnswer: { answer: "No", message: "Quiz ended early! No explosions, no fun!" }  // Custom message
   },
@@ -28,14 +26,12 @@ const questions = [
     question: "Is it a black and white movie?", 
     answers: ["Yes", "No"], 
     correctAnswer: "No", 
-    followUp: "Does the movie have a modern feel?", 
     image: "path_to_image_black_and_white.jpg"
   },
   { 
     question: "Does the movie explore deep philosophical themes?", 
     answers: ["Yes", "No"], 
     correctAnswer: "No", 
-    followUp: "Does it have a plot twist?", 
     image: "path_to_image_philosophical.jpg"
   }
 ];
@@ -111,73 +107,18 @@ function handleAnswer(answer) {
     result.textContent = `Incorrect answer! ${question.incorrectText || ''}`;
   }
 
-  // If there's a follow-up question, show it after the main question
-  if (question.followUp) {
-    setTimeout(() => {
-      result.textContent = question.followUp;  // Display the follow-up question text
-      const followUpAnswerContainer = document.createElement("div");
-      const followUpAnswers = ["Yes", "No"];
-
-      followUpAnswers.forEach(followUpAnswer => {
-        const button = document.createElement("button");
-        button.textContent = followUpAnswer;
-        button.onclick = () => handleFollowUpAnswer(followUpAnswer);
-        followUpAnswerContainer.appendChild(button);
-      });
-      
-      document.getElementById("buttons").appendChild(followUpAnswerContainer);
-    }, 1000); // Wait for 1 second before showing the follow-up question
-  } else {
-    // Proceed to the next question or finish the quiz
-    setTimeout(() => {
-      currentQuestionIndex++;
-      clearFollowUpButtons();  // Clear follow-up buttons before moving to the next question
-
-      if (currentQuestionIndex < questions.length) {
-        // Display next question
-        displayQuestion();
-      } else {
-        // End of quiz
-        result.textContent += " Quiz completed! Here's your result:";
-        showFinalResult();
-      }
-    }, 1000);  // Delay before moving to the next question
-  }
-}
-
-// Function to handle the user's follow-up answer
-function handleFollowUpAnswer(followUpAnswer) {
-  const followUpResult = document.getElementById("result");
-  const currentQuestion = questions[currentQuestionIndex];
-
-  // Store the follow-up answer
-  userAnswers.push({ question: currentQuestion.followUp, answer: followUpAnswer });
-
-  // Check if the follow-up answer is correct
-  if (followUpAnswer === currentQuestion.correctAnswerFollowUp) {
-    followUpResult.textContent = "Correct!";
-  } else {
-    followUpResult.textContent = "Incorrect!";
-  }
-
-  // After follow-up answer, move to the next question or end quiz
+  // Proceed to the next question or finish the quiz
   setTimeout(() => {
     currentQuestionIndex++;
-    clearFollowUpButtons();  // Clear follow-up buttons before moving to the next question
-
     if (currentQuestionIndex < questions.length) {
       // Display next question
       displayQuestion();
     } else {
+      // End of quiz
+      result.textContent += " Quiz completed! Here's your result:";
       showFinalResult();
     }
-  }, 1000);
-}
-
-// Function to clear the follow-up buttons
-function clearFollowUpButtons() {
-  const buttonsContainer = document.getElementById("buttons");
-  buttonsContainer.innerHTML = '';  // Clear all follow-up buttons
+  }, 1000);  // Delay before moving to the next question
 }
 
 // Function to show final result
