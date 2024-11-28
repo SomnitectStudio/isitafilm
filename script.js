@@ -12,8 +12,8 @@ const questions = [
     question: "Is The Rock in it?", 
     answers: ["Yes", "No"], 
     correctAnswer: "No", 
-    image: "https://watercoolerhq.co/wp-content/uploads/2021/07/Rock-khaki-collage-e1627672868830-768x421.jpg",
-    endQuizOnAnswer: { answer: "Yes", message: "Oof, sorry, this is definitely just a movie. Please tell me you didn't pay for this!" } // Custom message
+    endQuizOnAnswer: { answer: "Yes", message: "Oof, sorry, this is definitely just a movie. Please tell me you didn't pay for this!" },
+    image: "https://watercoolerhq.co/wp-content/uploads/2021/07/Rock-khaki-collage-e1627672868830-768x421.jpg"
   },
   { 
     question: "Does the movie have explosions?", 
