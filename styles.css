@@ -2,6 +2,7 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f9;
+  color: #333;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -9,8 +10,12 @@ body {
 
 main {
   width: 80%;
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 #title {
@@ -29,11 +34,12 @@ main {
 
 button {
   font-size: 1.2em;
-  padding: 10px 20px;
+  padding: 12px 24px;
   margin: 10px;
   cursor: pointer;
   border: none;
   border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
 .yes-button {
@@ -48,17 +54,25 @@ button {
 
 .yes-button:hover, .no-button:hover {
   opacity: 0.8;
+  transform: scale(1.05); /* Slightly increase button size on hover */
+}
+
+.yes-button:focus, .no-button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 #question {
   font-size: 1.5em;
   margin-top: 20px;
+  color: #333;
 }
 
 #question-image {
   max-width: 100%;
   height: auto;
   margin-top: 20px;
+  border-radius: 8px;
 }
 
 #footer-text {
@@ -81,4 +95,125 @@ button {
   margin-top: 20px;
   font-weight: bold;
   color: #333;
+}
+
+/* Styling for the section that holds question and buttons */
+#questionSection {
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* For Buttons Container */
+#buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* For Result container */
+#result {
+  color: #333;
+  font-weight: bold;
+  font-size: 1.4em;
+  margin-top: 20px;
+}
+
+/* ---------------------- Dark Mode ---------------------- */
+
+/* Automatically switch to dark mode if the user's system prefers it */
+@media (prefers-color-scheme: dark) {
+
+  /* Background and text colors for dark mode */
+  body {
+    background-color: #121212;
+    color: #ddd;
+  }
+
+  main {
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+  }
+
+  #title {
+    color: #fff;
+  }
+
+  #description {
+    color: #ccc;
+  }
+
+  button {
+    font-size: 1.2em;
+    padding: 12px 24px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    color: white;
+  }
+
+  .yes-button {
+    background-color: #4CAF50;
+  }
+
+  .no-button {
+    background-color: #f44336;
+  }
+
+  .yes-button:hover, .no-button:hover {
+    opacity: 0.8;
+    transform: scale(1.05); /* Slightly increase button size on hover */
+  }
+
+  .yes-button:focus, .no-button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+
+  #question {
+    color: #ddd;
+  }
+
+  #question-image {
+    border-radius: 8px;
+  }
+
+  #footer-text {
+    font-size: 0.9em;
+    color: #bbb;
+  }
+
+  #footer-text a {
+    color: #56B6C2;
+  }
+
+  #result {
+    color: #ddd;
+  }
+
+  /* Styling for question and buttons container */
+  #questionSection {
+    background-color: #333;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+  }
+
+  /* Buttons Container */
+  #buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Result container */
+  #result {
+    color: #ddd;
+    font-weight: bold;
+    font-size: 1.4em;
+    margin-top: 20px;
+  }
+
 }
