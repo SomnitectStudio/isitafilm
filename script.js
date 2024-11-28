@@ -14,8 +14,8 @@ const questions = [
     correctAnswer: "No", 
     endQuizOnAnswer: { answer: "Yes", message: "Oof, sorry, this is definitely just a movie. Please tell me you didn't pay for this!" },
     image: "https://watercoolerhq.co/wp-content/uploads/2021/07/Rock-khaki-collage-e1627672868830-768x421.jpg"
-  }
-
+  },
+  // Add more questions here if needed
 ];
 
 let currentQuestionIndex = 0;
@@ -80,7 +80,8 @@ function handleAnswer(answer) {
   console.log('Expected Answer:', question.endQuizOnAnswer ? question.endQuizOnAnswer.answer : 'No endQuizOnAnswer');
 
   // Check if the answer should end the quiz immediately with a custom message
-  if (question.endQuizOnAnswer && answer === question.endQuizOnAnswer.answer) {
+  // Make the comparison case-insensitive by using toLowerCase()
+  if (question.endQuizOnAnswer && answer.toLowerCase() === question.endQuizOnAnswer.answer.toLowerCase()) {
     console.log('Custom message triggered');  // Debugging message
     result.textContent = question.endQuizOnAnswer.message;  // Show the custom end message
     setTimeout(showFinalResult, 1000);  // Call function to show the final result after 1 second
