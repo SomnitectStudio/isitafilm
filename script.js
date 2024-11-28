@@ -14,30 +14,8 @@ const questions = [
     correctAnswer: "No", 
     endQuizOnAnswer: { answer: "Yes", message: "Oof, sorry, this is definitely just a movie. Please tell me you didn't pay for this!" },
     image: "https://watercoolerhq.co/wp-content/uploads/2021/07/Rock-khaki-collage-e1627672868830-768x421.jpg"
-  },
-  { 
-    question: "Does the movie have explosions?", 
-    answers: ["Yes", "No"], 
-    correctAnswer: "Yes", 
-    followUp: "Did Michael Bay direct it?",  // Fixed typo in follow-up text
-    correctAnswerFollowUp: "No",  // Correct answer for follow-up question
-    incorrectText: "Yeah, no. This man is to cinema what slaughterhouses are to cute animals",
-    endQuizOnAnswer: { answer: "No", message: "Quiz ended early! No explosions, no fun!" } // Custom message
-  },
-  { 
-    question: "Is it a black and white movie?", 
-    answers: ["Yes", "No"], 
-    correctAnswer: "No", 
-    followUp: "Does the movie have a modern feel?", 
-    image: "path_to_image_black_and_white.jpg"
-  },
-  { 
-    question: "Does the movie explore deep philosophical themes?", 
-    answers: ["Yes", "No"], 
-    correctAnswer: "No", 
-    followUp: "Does it have a plot twist?", 
-    image: "path_to_image_philosophical.jpg"
   }
+
 ];
 
 let currentQuestionIndex = 0;
